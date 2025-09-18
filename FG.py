@@ -3,4 +3,5 @@
 print("Solución a la ecuación ax^2+bx+c=0")
 a=float(input("coeficiente a="))
 b=float(input("coeficiente b="))
-b=float(input("coeficiente c="))
+c=float(input("coeficiente c="))
+#Calculo del determinante

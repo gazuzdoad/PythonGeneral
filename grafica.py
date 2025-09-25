@@ -1,12 +1,28 @@
 #Este programa gráfica funciones
-for x in range(1,41,1):
+#Valores
+X=[]
+Y=[]
+for x in range(-20,21,1):
+   y=2*x+5
+   X.append(x)
+   Y.append(y) 
+print(X)
+print(Y)
+ymin=min(Y)
+ymax=max(Y)
+print(ymin,ymax)
+
+#Grafica
+for j in range(ymax,ymin,1):
     fila=""    
-    for y in range(1,41,1):
+    for i in range(-20,21,1):
         
-        if x==21:
+        if i==0:
             fila+="+"
-        elif y==21:
+        elif j==0:
             fila+="+"
+        elif j==Y(ymax-j):
+            fila+="*"
         else:
             fila+=" "
     print(fila)

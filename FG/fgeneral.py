@@ -1,18 +1,49 @@
 #Este programa cálcula la fórmula general
 import math
-a=float(input("Dame el valor de a: "))  
-b=float(input("Dame el valor de b: "))
-c=float(input("Dame el valor de c: "))  
-#Calculamos el discriminante de la ecuación
-dis=math.pow(b,2)-4*a*c
-if dis<0:
-    print("No hay solución real")
-elif dis==0:
-    x=-b/(2*a)
-    print(f"Hay una solución real:{x}")
-else:
-    x1=(-b+math.sqrt(dis))/(2*a)
-    x2=(-b-math.sqrt(dis))/(2*a)
-    print(f"Hay dos soluciones reales: {x1} y {x2}")    
-print("Fin del programa")
-    
+import tkinter as tk
+from tkinter import messagebox
+#Crear la ventana principal
+root = tk.Tk()
+root.title("Solución de ax²+bx+c=0")
+root.geometry("500x500")
+#Arreglo de campos y etiquetas
+e1=tk.Label(root, text="Valor de a:")
+e1.pack()  
+a1=tk.Entry(root)
+a1.pack() 
+e2=tk.Label(root, text="Valor de b:")
+e2.pack()
+b1=tk.Entry(root)
+b1.pack()
+e3=tk.Label(root, text="Valor de c:")
+e3.pack()
+c1=tk.Entry(root)
+c1.pack()   
+#Obtener los valores de a, b y c
+def calcular_solucion():
+    try:
+        a = float(a1.get())
+        b = float(b1.get())
+        c = float(c1.get())
+    except ValueError:
+        # Muestra un mensaje de error al usuario
+        tk.messagebox.showerror("Error", "Por favor ingresa valores numéricos en todos los campos.")
+        return
+    #Discriminante
+    dis=math.pow(b,2)-4*a*c
+    if dis<0:
+        messagebox.showinfo("Resultado","No existe solución real")
+    elif dis==0:
+        x=-b/(2*a)
+        messagebox.showinfo("Resultado","Solución única: x=%.2f" %x)
+    else:
+        x1=(-b+math.sqrt(dis))/(2*a)
+        x2=(-b-math.sqrt(dis))/(2*a)
+        messagebox.showinfo("Resultado","Soluciones: x1=%.2f y x2=%.2f" %(x1,x2))
+#Botón para calcular
+boton_calcular=tk.Button(root, text="Calcular", command=calcular_solucion)
+boton_calcular.pack()
+
+boton=tk.Button(root, text="Cerrar", command=root.destroy)
+boton.pack()
+root.mainloop()

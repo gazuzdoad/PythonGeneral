@@ -2,6 +2,8 @@
 import math
 import tkinter as tk
 from tkinter import messagebox
+import matplotlib.pyplot as plt
+import numpy as np
 #Crear la ventana principal
 root = tk.Tk()
 root.title("Solución de ax²+bx+c=0")
@@ -46,6 +48,19 @@ def calcular_solucion():
         x2=(-b-math.sqrt(dis))/(2*a)
         resultado="Resultado","Soluciones: x1=%.2f y x2=%.2f" %(x1,x2)
     res.config(text=resultado)
+     # Graficar la función cuadrática
+    x_vals = np.linspace(-10, 10, 400)
+    y_vals = a * x_vals**2 + b * x_vals + c
+    plt.figure()
+    plt.plot(x_vals, y_vals, label="y = ax² + bx + c")
+    plt.axhline(0, color='black', linewidth=0.5)
+    plt.axvline(0, color='black', linewidth=0.5)
+    plt.title("Gráfica de la función cuadrática")
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
 
 
 #Botón para calcular
@@ -65,5 +80,6 @@ res.place(x=50,y=300)
 boton_calcular.place(x=50,y=200)
 boton.place(x=50,y=250)    
 
-
 root.mainloop()
+
+
